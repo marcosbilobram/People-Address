@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{_template :: head('cadastrar')}"></head>
+
+<body class="grey lighten-2">
+    <nav th:replace="~{_template :: #navbar}"></nav>
+
+    <main class="container">
+        <h3>Cadastrar Tarefa</h3>
+
+        <div class="card-panel">
+            <form th:action="${'/address'}" method="post" th:object="${address}">
+                <div class="input-field col s12">
+                    <input type="text" th:field="*{street}" class="validate">
+                    <label for="street">Rua</label>
+                    <span class="helper-text red-text" th:errors="*{street}"></span>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" th:field="*{number}" class="validate">
+                    <label for="number">Número</label>
+                    <span class="helper-text red-text" th:errors="*{number}"></span>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" th:field="*{zipCode}" class="validate">
+                    <label for="zipCode">CEP</label>
+                    <span class="helper-text red-text" th:errors="*{zipCode}"></span>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" th:field="*{city}" class="validate">
+                    <label for="city">Cidade</label>
+                    <span class="helper-text red-text" th:errors="*{city}"></span>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

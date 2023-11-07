@@ -32,12 +32,12 @@ public class AddressService {
     public void catchAddress(Long id, User user) {
         var optional = repository.findById(id);
         if (optional.isEmpty())
-            throw new RuntimeException("tarefa não encontrada");
+            throw new RuntimeException("Endereço não encontrado");
 
         var task = optional.get();
 
         if (task.getUser() != null)
-            throw new RuntimeException("tarefa já atribuída");
+            throw new RuntimeException("Endereço já atribuído");
 
         task.setUser(user);
         repository.save(task);
@@ -47,15 +47,15 @@ public class AddressService {
     public void dropAddress(Long id, User user) {
         var optional = repository.findById(id);
         if (optional.isEmpty())
-            throw new RuntimeException("tarefa não encontrada");
+            throw new RuntimeException("Endereço não encontrado");
 
         var task = optional.get();
 
         if (task.getUser() == null)
-            throw new RuntimeException("tarefa não já atribuída");
+            throw new RuntimeException("Endereço não já atribuído");
 
         if (!task.getUser().equals(user))
-            throw new RuntimeException("tarefa atribuída para outro usuário");
+            throw new RuntimeException("Endereço atribuído para outro usuário");
 
         task.setUser(null);
         repository.save(task);
